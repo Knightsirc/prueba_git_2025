@@ -141,101 +141,195 @@ button:active {
     perspective: 1000px;
 }
 
-/* Mario CSS Animation */
-.mario {
+/* Monigotes Luchando con Espadas */
+.sword-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px 0;
+    gap: 40px;
+    min-height: 300px;
+}
+
+.vs {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #764ba2;
+    animation: vsPulse 1s ease-in-out infinite;
+}
+
+@keyframes vsPulse {
+    0%, 100% {
+        transform: scale(1);
+        color: #764ba2;
+    }
+    50% {
+        transform: scale(1.2);
+        color: #ff0000;
+    }
+}
+
+.fighter {
     position: relative;
-    width: 150px;
-    height: 200px;
-    animation: marioJump 1s ease-in-out infinite;
+    width: 100px;
+    height: 180px;
 }
 
-.mario-head {
+.fighter-right {
+    transform: scaleX(-1);
+}
+
+.head {
     position: absolute;
-    width: 60px;
-    height: 60px;
-    background: #ff6b35;
+    width: 30px;
+    height: 30px;
+    background: #fdbcb4;
     border-radius: 50%;
-    top: 10px;
-    left: 45px;
-    box-shadow: 
-        inset -5px 5px 0 rgba(0, 0, 0, 0.2),
-        0 0 10px rgba(255, 100, 0, 0.5);
+    top: 0;
+    left: 35px;
+    border: 2px solid #333;
 }
 
-.mario-head::before {
+.head::before {
     content: '';
     position: absolute;
-    width: 20px;
-    height: 20px;
+    width: 6px;
+    height: 6px;
     background: #000;
     border-radius: 50%;
-    top: 20px;
-    left: 15px;
+    top: 8px;
+    left: 8px;
 }
 
-.mario-head::after {
+.head::after {
     content: '';
     position: absolute;
-    width: 10px;
-    height: 10px;
-    background: #fff;
+    width: 6px;
+    height: 6px;
+    background: #000;
     border-radius: 50%;
-    top: 23px;
-    left: 18px;
+    top: 8px;
+    left: 16px;
 }
 
-.mario-body {
+.body {
     position: absolute;
-    width: 70px;
-    height: 50px;
+    width: 25px;
+    height: 45px;
     background: #ff0000;
-    top: 75px;
-    left: 40px;
-    box-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
+    top: 35px;
+    left: 37.5px;
+    border: 2px solid #333;
 }
 
-.mario-legs {
+.arm {
     position: absolute;
-    width: 70px;
+    width: 8px;
     height: 40px;
-    top: 125px;
-    left: 40px;
-    display: flex;
-    gap: 20px;
-    justify-content: center;
+    background: #fdbcb4;
+    top: 40px;
+    border: 1px solid #333;
+    transform-origin: top center;
 }
 
-.mario-legs::before,
-.mario-legs::after {
-    content: '';
-    width: 20px;
-    height: 40px;
-    background: #ff6b35;
-    animation: legSwing 1s ease-in-out infinite;
+.arm-left {
+    left: 22px;
+    animation: armFight 0.8s ease-in-out infinite;
 }
 
-.mario-legs::after {
+.arm-right {
+    right: 22px;
+    animation: armFight 0.8s ease-in-out infinite;
+    animation-delay: 0.4s;
+}
+
+.leg {
+    position: absolute;
+    width: 8px;
+    height: 40px;
+    background: #0066cc;
+    top: 85px;
+    border: 1px solid #333;
+    transform-origin: top center;
+}
+
+.leg-left {
+    left: 30px;
+    animation: legFight 0.8s ease-in-out infinite;
+}
+
+.leg-right {
+    right: 30px;
+    animation: legFight 0.8s ease-in-out infinite;
     animation-delay: 0.2s;
 }
 
-@keyframes marioJump {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-50px);
-    }
+.sword {
+    position: absolute;
+    width: 6px;
+    height: 50px;
+    background: linear-gradient(90deg, #c0c0c0 0%, #ffffff 50%, #a8a8a8 100%);
+    top: 45px;
+    transform-origin: top center;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
 }
 
-@keyframes legSwing {
+.sword-left {
+    right: 10px;
+    animation: swordFightLeft 0.8s ease-in-out infinite;
+}
+
+.sword-right {
+    left: 10px;
+    animation: swordFightRight 0.8s ease-in-out infinite;
+    animation-delay: 0.4s;
+}
+
+.sword::before {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 8px;
+    background: #d2691e;
+    top: 48px;
+    left: -4.5px;
+    border-radius: 2px;
+    border: 1px solid #8b4513;
+}
+
+@keyframes armFight {
     0%, 100% {
         transform: rotateZ(0deg);
     }
-    25% {
-        transform: rotateZ(-30deg);
+    50% {
+        transform: rotateZ(-80deg);
     }
-    75% {
+}
+
+@keyframes legFight {
+    0%, 100% {
+        transform: rotateZ(0deg);
+    }
+    50% {
         transform: rotateZ(30deg);
+    }
+}
+
+@keyframes swordFightLeft {
+    0%, 100% {
+        transform: rotateZ(0deg);
+    }
+    50% {
+        transform: rotateZ(-100deg);
+    }
+}
+
+@keyframes swordFightRight {
+    0%, 100% {
+        transform: rotateZ(0deg);
+    }
+    50% {
+        transform: rotateZ(100deg);
     }
 }
 
